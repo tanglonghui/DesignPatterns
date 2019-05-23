@@ -20,13 +20,57 @@ import java.util.ArrayList;
  * 貌似很简单的样子,没有想象中的那么复杂
  */
 public class Test {
-public static void main(String[] args) {
-	ConcreteObserverA ca=new ConcreteObserverA();
-	ConcreteObserverB cb=new ConcreteObserverB();
-	ConcreteSubject s=new ConcreteSubject();
-	s.attach(ca);
-	s.attach(cb);
-	s.cry();
-	}
+    public static void main(String[] args) {
+        ConcreteObserverA ca = new ConcreteObserverA();
+        ConcreteObserverB cb = new ConcreteObserverB();
+        ConcreteSubject s = new ConcreteSubject();
+        s.attach(ca);
+        s.attach(cb);
+        s.attach(new Observer() {
+            @Override
+            public void response() {
+                System.out.println("匿名内部类");
+            }
+        });
+        s.cry();
+//模仿一波
+        ConcreteSubBject2 concreteSubBject2 = new ConcreteSubBject2();
+        concreteSubBject2.create(new ObservableOnSubscribe() {
+            @Override
+            public void subscribe() {
+                System.out.println("发起");
+            }
+        }).attach(new Observer() {
+            @Override
+            public void response() {
+                System.out.println("响应");
+            }
+        });
+//        concreteSubBject2.cry();
+    }
+
+
 }
- 
+
+class ConcreteSubBject2 extends Subject {
+    private ObservableOnSubscribe subscribe;
+
+    @Override
+    public void cry() {
+        subscribe.subscribe();
+        System.out.println("发起事件源");
+        for (Object obs : observers) {
+            ((Observer) obs).response();
+        }
+    }
+
+    public ConcreteSubBject2 create(ObservableOnSubscribe subscribe) {
+        this.subscribe = subscribe;
+        return this;
+    }
+
+}
+
+interface ObservableOnSubscribe {
+    void subscribe();
+}
