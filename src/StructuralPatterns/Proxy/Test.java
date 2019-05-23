@@ -22,37 +22,3 @@ public class Test {
 		proxy.jump();
 	}
 }
-interface Subject{
-	void move();
-	void jump();
-}
-class RealSubject implements Subject{
-
-	@Override
-	public void move() {
-		// TODO Auto-generated method stub
-		System.out.println("移动");
-	}
-
-	@Override
-	public void jump() {
-		// TODO Auto-generated method stub
-		System.out.println("跳");
-	}
-}
-class Proxy implements Subject{
-	private RealSubject r=new RealSubject();
-
-	@Override
-	public void move() {
-		// TODO Auto-generated method stub
-		r.move();
-	}
-
-	@Override
-	public void jump() {
-		// TODO Auto-generated method stub
-		r.jump();
-	}
-	
-}

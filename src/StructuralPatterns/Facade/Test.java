@@ -19,32 +19,3 @@ public static void main(String[] args) {
 	facade.control2();
 }
 }
-class Facade{
-	SubSystem1 s1=new SubSystem1();
-	SubSystem2 s2=new SubSystem2();
-	//在这里可以自定义组合功能键
-	void control1(){
-		s1.on();
-		s2.move();
-	}
-	void control2() {
-		s1.off();
-		s2.say();
-	}
-}
-class SubSystem1{
-	void on() {
-		System.out.println("灯开了");
-	}
-	void off() {
-		System.out.println("灯关了");
-	}
-}
-class SubSystem2{
-	void move() {
-		System.out.println("移动");
-	}
-	void say() {
-		System.out.println("说话");
-	}
-}

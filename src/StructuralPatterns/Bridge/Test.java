@@ -21,68 +21,6 @@ public class Test {
 	}
 
 }
-interface Color{
-	<T extends Shape> void paint(T t);
-}
-class Red implements Color{
-   private String msg="red";
-
-@Override
-	public <T extends Shape> void paint(T t) {
-		// TODO Auto-generated method stub
-			System.out.println("形状："+t.getShape()+"  颜色："+msg);
-	}
-}
-class Green implements Color{
-	   private String msg="green";
-
-	@Override
-		public <T extends Shape> void paint(T t) {
-			// TODO Auto-generated method stub
-				System.out.println("形状："+t.getShape()+"  颜色："+msg);
-		}
-	}
-
-
-interface  Shape{
-	String getShape();
-	void draw(Color color);
-	
-}
-class A implements Shape{
-	private Color color;
-	private String shape="A";
-	@Override
-	public String getShape() {
-		// TODO Auto-generated method stub
-		return shape;
-	}
-
-	@Override
-	public void draw(Color color) {
-		// TODO Auto-generated method stub
-		this.color=color;
-		color.paint(this);
-	}
-	
-}
-class B implements Shape{
-	private Color color;
-	private String shape="A";
-	@Override
-	public String getShape() {
-		// TODO Auto-generated method stub
-		return shape;
-	}
-
-	@Override
-	public void draw(Color color) {
-		// TODO Auto-generated method stub
-		this.color=color;
-		color.paint(this);
-	}
-	
-}
 
 
 

@@ -22,37 +22,6 @@ public class Test {
 		
 	}
 }
-class Context{
-	private Strategy strategy;
-	public Context(Strategy strategy) {
-		// TODO Auto-generated constructor stub
-		this.strategy=strategy;
-	}
-	public int executIt(int num1, int num2) {
-		return strategy.doOperation(num1, num2);
-	}
-}
-interface Strategy{
-	 public int doOperation(int num1, int num2);
-}
-class ConcreteStrategyA implements Strategy{
-
-	@Override
-	public int doOperation(int num1, int num2) {
-		// TODO Auto-generated method stub
-		return num1+num2;
-	}
-	
-}
-class ConcreteStrategyB implements Strategy{
-
-	@Override
-	public int doOperation(int num1, int num2) {
-		// TODO Auto-generated method stub
-		return num1-num2;
-	}
-	
-}
 
 
 
